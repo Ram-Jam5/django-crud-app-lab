@@ -40,6 +40,7 @@ class Player(models.Model):
     )
     description = models.TextField(max_length=250)
     age = models.IntegerField()
+    profile_image = models.ImageField(upload_to='player_images/', blank=True, null=True)
 
 
     def __str__(self):
