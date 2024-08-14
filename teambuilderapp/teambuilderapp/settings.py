@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'teambuilderapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'teambuilderapp',
+        'NAME': 'playerdb',
     }
 }
 
