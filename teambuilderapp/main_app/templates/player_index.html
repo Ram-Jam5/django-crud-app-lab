@@ -6,6 +6,7 @@
 <section class="card-container">
     {% for player in players %}
     <div class="card">
+        <a href="/players/{{ player.id }}">
         <div class="card-content">
             <div class="card-img-container"></div>
             <h2 class="card-title">{{ player.name }}</h2>
@@ -14,6 +15,7 @@
             <h3>{{ player.age }}</h3>
             <h4>{{ player.description }}</h4>
         </div>
+        </a>
     </div>
     {% endfor %}
 </section>

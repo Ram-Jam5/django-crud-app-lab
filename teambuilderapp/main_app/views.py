@@ -9,3 +9,7 @@ def home(request):
 def player_index(request):
     players = Player.objects.all()
     return render(request, 'player_index.html', {'players': players})
+
+def player_detail(request, player_id):
+    player = Player.objects.get(id=player_id)
+    return render(request, 'player/detail.html', {'player': player})
