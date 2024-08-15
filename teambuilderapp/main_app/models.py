@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -56,3 +56,6 @@ class Player(models.Model):
         return self.player_position in {self.RIGHT_BACK, self.LEFT_BACK, self.CENTER_BACK}
     def is_goalkeeper(self):
         return self.player_position in {self.GOAL_KEEPER}
+    
+    def get_absolute_url(self):
+        return reverse('player-detail', kwargs={'player_id': self.id})

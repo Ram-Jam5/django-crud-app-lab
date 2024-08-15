@@ -14,5 +14,9 @@
         <h3>{{ player.age }}</h3>
         <p>{{ player.description }}</p>
     </div>
+    <div class="player-actions">
+        <a href="{% url 'player-update' player.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'player-delete' player.id %}" class="btn danger">Delete</a>
+    </div>
 </section>
 {% endblock %}
