@@ -1,6 +1,10 @@
 {% extends 'base.html' %} 
 {% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+{% endblock %}
 {% block content %}
+
 <section class="page-header">
     <h1>Index for players</h1> 
 </section>
@@ -9,6 +13,7 @@
     <div class="card">
         <a href="/players/{{ player.id }}">
         <div class="card-content">
+            <h2 class="card-title">{{ player.name }}</h2>
             <div class="card-img-container">
                 {% if player.profile_image %}
                     <img src="{{ player.profile_image.url }}" alt="{{ player.name }}" class="card-img">
@@ -16,11 +21,10 @@
                     <img src="{% static 'No_Image_Available.jpg' %}" alt="No Imagae Available" class="card-img">
                 {% endif %}
             </div>
-            <h2 class="card-title">{{ player.name }}</h2>
-            <h3 class="card-team">{{ player.team }}</h3>
-            <h3>{{ player.player_position }}</h3>
-            <h3>{{ player.age }}</h3>
-            <h4>{{ player.description }}</h4>
+            <h2 class="card-team">{{ player.team }}</h2>
+            <p>{{ player.player_position }}</p>
+            <p>{{ player.age }}</p>
+            <p>{{ player.description }}</p>
         </div>
         </a>
     </div>
