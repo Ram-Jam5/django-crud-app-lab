@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/toys/toy-detail.css' %}" /> {% endcomment %}
+{% endblock %} 
+{% block content %}
+
+<div class="card" style="border-color: {{ toy.color }}">
+  <div class="card-bg" style="background-color: {{ toy.color }}"></div>
+  <div class="card-content">
+    <h2>{{ rating.sell }}</h2>
+    <p>{{ rating.rating }}</p>
+  </div>
+</div>
+<a href="{% url 'rating-update' rating.id %}" class="btn warn">Edit</a>
+<a href="{% url 'rating-delete' rating.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

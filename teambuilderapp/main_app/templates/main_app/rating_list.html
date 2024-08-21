@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/toys/toy-index.css' %}" /> {% endcomment %}
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>All Ratings</h1>
+  {% comment %} <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+  <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+  <img src="{% static 'images/post.svg' %}" alt="A scratching post" />
+  <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" /> {% endcomment %}
+</section>
+
+<section class="card-container">
+  {% for rating in rating_list %}
+    <div class="card" style="border-color: {{ toy.color }}">
+      <div class="card-bg" style="background-color: {{ toy.color }}"></div>
+      <a href="{% url 'rating-detail' rating.id %}">
+        <div class="card-content">
+          <h2>{{ rating.sell }}</h2>
+          <p>{{ rating.rating }}</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

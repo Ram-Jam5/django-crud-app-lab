@@ -8,4 +8,10 @@ urlpatterns = [
     path('players/create/', views.PlayerCreate.as_view(), name='player-create'),
     path('players/<int:pk>/update/', views.PlayerUpdate.as_view(), name='player-update'),
     path('players/<int:pk>/delete/', views.PlayerDelete.as_view(), name='player-delete'),
+    path('rating/create', views.RatingCreate.as_view(), name='rating-create'),
+    path('rating/<int:pk>/', views.RatingDetail.as_view(), name='rating-detail'),
+    path('rating/', views.RatingList.as_view(), name='rating-index'),
+    path('rating/<int:pk>/update/', views.RatignUpdate.as_view(), name='rating-update'),
+    path('rating/<int:pk>/delete/', views.RatingDelete.as_view(), name='rating-delete'),
+    path('rating/<int:pk>/associate-rating/<int:rating_id>/', views.associate_rating, name='associate-rating')
 ]

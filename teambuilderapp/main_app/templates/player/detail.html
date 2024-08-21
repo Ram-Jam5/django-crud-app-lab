@@ -13,6 +13,8 @@
         <h3>{{ player.player_position }}</h3>
         <h3>{{ player.age }}</h3>
         <p>{{ player.description }}</p>
+        {% for trophy in player.trophy_set.all %}
+            <p>{{ trophy.get_trophy_display }}</p>
     </div>
     <div class="player-actions">
         <a href="{% url 'player-update' player.id %}" class="btn warn">Edit</a>

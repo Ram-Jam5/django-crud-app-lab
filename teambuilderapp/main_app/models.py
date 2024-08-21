@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+# Import the User
+from django.contrib.auth.models import User
 # Create your models here.
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -9,7 +12,15 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
+
+class Rating(models.Model):
+    rating = models.CharField(max_length=200)
+    sell = models.CharField(max_length=50)
     
+    def __str__(self):
+        return self.rating
+    def get_absolute_url(self):
+        return reverse("rating-detail", kwargs={"pk": self.id})        
 class Player(models.Model):
     name = models.CharField(max_length=100)
     team = models.CharField(max_length=100)
@@ -40,7 +51,9 @@ class Player(models.Model):
     )
     description = models.TextField(max_length=250)
     age = models.IntegerField()
-    profile_image = models.ImageField(upload_to='player_images/', blank=True, null=True)
+    profile_image = models.ImageField(upload_to='images/player_images/', blank=True, null=True)
+    rating = models.ManyToManyField(Rating)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def __str__(self):
@@ -59,3 +72,25 @@ class Player(models.Model):
     
     def get_absolute_url(self):
         return reverse('player-detail', kwargs={'player_id': self.id})
+
+TROPHIES =(
+    ('EPL', 'English Premier League'),
+    ('UCL', 'UEFA Champions League'),
+    ('FAC', 'Footballers Association Cup'),
+    ('NON','No Trophies won this season!'),
+    )
+class Trophy(models.Model):
+    date = models.DateField('Trophy Date')
+    trophy = models.CharField(
+        max_length=3,
+        choices = TROPHIES,
+        default=TROPHIES[3][0]
+    )
+    
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.get_trophy_display()}"
+    
+
+    

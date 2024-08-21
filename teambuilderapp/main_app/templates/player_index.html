@@ -18,7 +18,7 @@
                 {% if player.profile_image %}
                     <img src="{{ player.profile_image.url }}" alt="{{ player.name }}" class="card-img">
                 {% else %}
-                    <img src="{% static 'No_Image_Available.jpg' %}" alt="No Imagae Available" class="card-img">
+                    <img src="{% static 'images/No_Image_Available.jpg' %}" alt="No Imagae Available" class="card-img">
                 {% endif %}
             </div>
             <h2 class="card-team">{{ player.team }}</h2>
