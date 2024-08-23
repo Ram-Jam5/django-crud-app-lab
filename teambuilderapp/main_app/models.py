@@ -80,7 +80,7 @@ TROPHIES =(
     ('NON','No Trophies won this season!'),
     )
 class Trophy(models.Model):
-    date = models.DateField('Trophy Date')
+    # date = models.DateField('Trophy Date')
     trophy = models.CharField(
         max_length=3,
         choices = TROPHIES,

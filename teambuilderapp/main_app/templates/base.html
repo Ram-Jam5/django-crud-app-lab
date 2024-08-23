@@ -21,9 +21,20 @@
       </div>
       <nav>
         <ul>
-          <li><a href="/players">Players</a></li>
-          <li><a href="{% url 'player-create' %}">Add a player</a></li>
-          <li><a href="{% url 'rating-create' %}">Add a rating</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="/players">Players</a></li>
+            <li><a href="{% url 'player-create' %}">Add a player</a></li>
+            <li><a href="{% url 'rating-create' %}">Add a rating</a></li>
+            <li>
+              <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'home' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>
